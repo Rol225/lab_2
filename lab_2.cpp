@@ -148,7 +148,43 @@ void start(ref* rePtr) {
 
 /// Вывод структур
 void out(int count) {
-	
+	int choise = 0;
+	char numHouse[4];
+
+	printf("\n\t\tДоступные варианты\n");
+	for (int i = 0; i < count + 1; i++) {
+		snprintf(numHouse, 4, "%d", House[i].location.numHouse);
+		printf("\n№ %d", i + 1);
+		printf("\nАдрес дома: ул. %s д. %s\n", House[i].location.houseAdress, numHouse);
+		printf("  Номер квартиры: %d\n", House[i].flat.numFlat);
+		printf("  Расстояние до школы: %d км\n", House[i].location.distanceSchool);
+		printf("  Расстояние до больницы: %d км\n", House[i].location.distanceHospital);
+		printf("  Расстояние до детского сада: %d км\n", House[i].location.distanceKindergarten);
+		printf("  Кол-во комнат: %d\n", House[i].flat.countRoom);
+		printf("  Цена: %d рублей\n", House[i].flat.coin);
+		for (int j = 0; j < 29; j++) {
+			if (strcmp(House[i].location.houseAdress, Street[j].streetName) == 0) {
+				printf("  Информация о улице: %s\n", Street[j].streetDescription);
+			}
+		}
+
+	}
+	printf("\n  1) Редактировать запись\n  2) В главное меню\n  Что вы хотите сделать? ");
+	while (scanf("%d", &choise) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	if (choise == 1) {
+		printf("\n  Введите номер для редактирования записи: ");
+		do {
+			while (scanf("%d", &choise) != 1) {
+				while (getchar() != '\n');
+				printf("Ошибка. Введите число: ");
+			}
+		} while (choise < 1 || choise > count);
+
+		Eddit(choise - 1);
+	}
 }
 
 /// Подбор жилплощади
