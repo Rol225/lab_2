@@ -51,7 +51,7 @@ typedef struct reference ref; //тип
 /// Функциии объявление
 /// </summary>
 
-void start(); // Автоматическое заполнение структур
+void start(ref* rePtr); // Автоматическое заполнение структур
 void out(int count); // Вывод структур
 void outH_1(int i, int mod); // Вывод найденного
 void podbor(); //Подбор жилой площади
@@ -68,9 +68,10 @@ int main()
 	SetConsoleOutputCP(1251);
 	
 	ref re;
-	
+	ref* rePtr = NULL;
+	rePtr = &re;
 
-	start();
+	start(&re);
 	
 	int choise = 0;
 	int count = 4;
@@ -114,7 +115,35 @@ int main()
 /// Автоматическое заполнение структур
 void start(ref* rePtr) {
 
-	
+	int r = 0;
+	int r_2 = 0;
+	const char* street[] = { "Швейцова", "Гоголя", "Лукашенко", "Строительная", "Весимирская", "Некрасова" };
+	const char* streetDescription[] = { "Хорошая улица, хорошие дороги, люди добрые", "Плохая улица, много гопников", "Много сильных людей, могут избить", "Дороги разбиты, люди нормальные", "Очень хорошая улица", "Довольно опасная улица" };
+
+	for (int i = 0; i < 5; i++) {
+		(*rePtr).countHouses++;
+		r = 1 + rand() % 5;
+		House[i].location.distanceSchool = 1 + rand() % 10;
+		House[i].location.distanceHospital = 1 + rand() % 10;
+		House[i].location.distanceKindergarten = 1 + rand() % 10;
+		House[i].flat.coin = 1000000 + rand() % 10000000;
+		House[i].flat.countRoom = 1 + rand() % 4;
+		House[i].flat.numFlat = rand() % 999;
+
+		for (int j = 0; j < 2; j++) {
+			r_2 = 1 + rand() % 10;
+			House[i].location.numHouse = House[i].location.numHouse * 10 + r_2;
+		}
+
+		strcat(House[i].location.houseAdress, street[r]);
+	}
+
+	for (int i = 0; i < 6; i++) {
+		r = 1 + rand() % 5;
+		strcat(Street[i].streetName, street[i]);
+		strcat(Street[i].streetDescription, streetDescription[r]);
+		(*rePtr).countStreets++;
+	}
 }
 
 /// Вывод структур
