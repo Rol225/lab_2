@@ -389,7 +389,33 @@ void podbor() {
 
 /// Вывод найденного
 void outH_1(int i, int mod) {
-	
+	int choise = 0;
+	int count = 0;
+
+	printf("№ %d", i + 1);
+	printf("\nАдрес дома: %s\n", House[i].location.houseAdress);
+	printf("  Номер квартиры: %d\n", House[i].flat.numFlat);
+	printf("  Расстояние до школы: %d км\n", House[i].location.distanceSchool);
+	printf("  Расстояние до больницы: %d км\n", House[i].location.distanceHospital);
+	printf("  Расстояние до детского сада: %d км\n", House[i].location.distanceKindergarten);
+	printf("  Кол-во комнат: %d\n", House[i].flat.countRoom);
+	printf("  Цена: %d рублей\n", House[i].flat.coin);
+
+	for (int j = 0; j < 29; j++) {
+		if (strcmp(House[i].location.houseAdress, Street[j].streetName) == 0) {
+			printf("  Информация о улице: %s\n", Street[j].streetDescription);
+		}
+	}
+	if (mod == 2) {
+		printf("\n  1) Редактировать запись\n  2) В главное меню\n  Что вы хотите сделать? ");
+		while (scanf("%d", &choise) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (choise == 1) {
+			Eddit(i + 1);
+		}
+	}
 	
 }
 
