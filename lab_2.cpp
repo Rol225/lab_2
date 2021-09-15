@@ -487,5 +487,87 @@ int Add(int count, ref* rePtr) {
 
 /// Изменение жилплощади
 int Eddit(int count) {
+	int choise = 0;
+	outH_1(count, 2);
+
+
+	int distanceSchool = 0;
+	int distanceHospital = 0;
+	int  distanceKindergarten = 0;
+	char houseAdress[30] = { 0 };
+	int coin = 0;
+	int countRoom = 0;
+	int numFlat = 0;
+
+
+	printf("\n  1) Изменить данные\n  2) В главное меню\n Что вы хотите сделать? ");
+	do {
+		while (scanf("%d", &choise) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+	} while (choise < 1 || choise > 2);
+
+	if (choise == 1) {
+		printf("\nАдрес дома (0 если не менять): ");
+		scanf("%s", &houseAdress); while (getchar() != '\n');
+		if (houseAdress != "0") {
+			strcpy(House[count].location.houseAdress, houseAdress);
+		}
+		printf("  Номер квартиры(0 если не менять): ");
+		while (scanf("%d", &numFlat) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (numFlat != 0) {
+			House[count].flat.numFlat = numFlat;
+		}
+		printf("  Расстояние до школы(0 если не менять): ");
+		while (scanf("%d", &distanceSchool) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (distanceSchool != 0) {
+			House[count].location.distanceSchool = distanceSchool;
+		}
+		printf("  Расстояние до больницы(0 если не менять):");
+		while (scanf("%d", &distanceHospital) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (distanceHospital != 0) {
+			House[count].location.distanceHospital = distanceHospital;
+		}
+		printf("  Расстояние до детского сада(0 если не менять): ");
+		while (scanf("%d", &distanceKindergarten) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (distanceKindergarten != 0) {
+			House[count].location.distanceKindergarten = distanceKindergarten;
+		}
+		printf("  Кол-во комнат(0 если не менять): ");
+		while (scanf("%d", &countRoom) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (countRoom != 0) {
+			House[count].flat.countRoom = countRoom;
+		}
+		printf("  Цена(0 если не менять): ");
+		while (scanf("%d", &House[count].flat.coin) != 1) {
+			while (getchar() != '\n');
+			printf("Ошибка. Введите число: ");
+		}
+		if (coin != 0) {
+			House[count].flat.coin = coin;
+		}
+		system("@cls||clear");
+		outH_1(count, 2);
+	}
+	else if (choise == 2) {
+		system("@cls||clear");
+	}
+
 	return count;
 }
