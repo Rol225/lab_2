@@ -55,7 +55,7 @@ void start(ref* rePtr); // Автоматическое заполнение с�
 void out(int count); // Вывод структур
 void outH_1(int i, int mod); // Вывод найденного
 void podbor(); //Подбор жилой площади
-int Add(int count); //Добавление жилплощади
+int Add(int count, ref* rePtr); //Добавление жилплощади
 int Eddit(int count); //Редактирование структуры
 
 /// <summary>
@@ -420,9 +420,70 @@ void outH_1(int i, int mod) {
 }
 
 /// Добавление жилплощади
-int Add(int count) {
-	return count;
- }
+int Add(int count, ref* rePtr) {
+	int t = 0;
+	(*rePtr).countHouses++;
+	printf("\nВводите данные.\n");
+	printf("\nУлица: "); scanf("%s", &House[count].location.houseAdress); while (getchar() != '\n');
+	for (int i = 0; i < count + 1; i++) {
+		for (int j = 0; j < 29; j++) {
+			if (strcmp(House[i].location.houseAdress, Street[j].streetName) == -1) {
+				if (t == 0) {
+					(*rePtr).countStreets++;
+					t = 1;
+					strcat(Street[j + 1].streetName, House[i].location.houseAdress);
+					printf("  Информация о улице: ");
+					scanf("%s", &Street[j + 1].streetDescription); while (getchar() != '\n');
+				}
+			}
+		}
+	}
+
+	printf("  Номер дома: ");
+	while (scanf("%d", &House[count].location.numHouse) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	printf("  Номер квартиры: ");
+	while (scanf("%d", &House[count].flat.numFlat) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	printf("  Расстояние до школы: ");
+	while (scanf("%d", &House[count].location.distanceSchool) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	printf("  Расстояние до больницы:");
+	while (scanf("%d", &House[count].location.distanceHospital) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	printf("  Расстояние до детского сада: ");
+	while (scanf("%d", &House[count].location.distanceKindergarten) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	printf("  Кол-во комнат: ");
+	while (scanf("%d", &House[count].flat.countRoom) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+	printf("  Цена: ");
+	while (scanf("%d", &House[count].flat.coin) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+
+	outH_1(count, 2);
+
+	printf("\n\nПродолжить любая клавиша");
+	_getch();
+
+	(*rePtr).countHouses++;
+
+	return count++;
+}
 
 /// Изменение жилплощади
 int Eddit(int count) {
