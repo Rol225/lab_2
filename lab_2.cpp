@@ -189,7 +189,202 @@ void out(int count) {
 
 /// Подбор жилплощади
 void podbor() {
-	
+	int max_distanceSchool = 0;
+	int max_distanceHospital = 0;
+	int max_distanceKindergarten = 0;
+	int max_coin = 0;
+	int countRoom = 0;
+	int search = 0;
+
+	printf("Выберите максимальое расстояние до школы (0 если не важно): ");
+	while (scanf("%d", &max_distanceSchool) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+
+	printf("Выберите максимальое расстояние до больницы (0 если не важно): ");
+	while (scanf("%d", &max_distanceHospital) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+
+	printf("Выберите максимальое расстояние до детского сада (0 если не важно): ");
+	while (scanf("%d", &max_distanceKindergarten) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+
+	printf("Выберите максимальую стоимость квартиры (0 если не важно): ");
+	while (scanf("%d", &max_coin) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+
+	printf("Выберите кол-во комнат (0 если не важно): ");
+	while (scanf("%d", &countRoom) != 1) {
+		while (getchar() != '\n');
+		printf("Ошибка. Введите число: ");
+	}
+
+	for (int i = 0; i < 5; i++) {
+		if (max_distanceSchool != 0) {
+			if (max_distanceHospital != 0) {
+				if (max_distanceKindergarten != 0) {
+					if (max_coin != 0) {
+						if (countRoom != 0) {
+							if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin && countRoom >= House[i].flat.countRoom) {
+								outH_1(i, 1); search = 1; (i);
+							}
+						}
+						else {
+							if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin) {
+								outH_1(i, 1); search = 1; (i);
+							}
+						}
+					}
+					else if (countRoom != 0) {
+						if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten && countRoom >= House[i].flat.countRoom) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+					else {
+						if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+				}
+				else if (max_coin != 0) {
+					if (countRoom != 0) {
+						if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && max_coin >= House[i].flat.coin && countRoom >= House[i].flat.countRoom) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+					else {
+						if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && max_coin >= House[i].flat.coin) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+				}
+				else if (countRoom != 0) {
+					if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital && countRoom >= House[i].flat.countRoom) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+				else {
+					if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceHospital >= House[i].location.distanceHospital) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+			}
+			else if (max_distanceKindergarten != 0) {
+				if (max_coin != 0) {
+					if (countRoom != 0) {
+						if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin && countRoom >= House[i].flat.countRoom) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+					else {
+						if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+				}
+				else if (countRoom != 0) {
+					if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceKindergarten >= House[i].location.distanceKindergarten && countRoom >= House[i].flat.countRoom) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+				else {
+					if (max_distanceSchool >= House[i].location.distanceSchool && max_distanceKindergarten >= House[i].location.distanceKindergarten) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+			}
+			else {
+				if (max_distanceSchool >= House[i].location.distanceSchool) {
+					outH_1(i, 1); search = 1; (i);
+				}
+			}
+		}
+		else {
+			if (max_distanceHospital != 0) {
+				if (max_distanceKindergarten != 0) {
+					if (max_coin != 0) {
+						if (countRoom != 0) {
+							if (max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin && countRoom >= House[i].flat.countRoom) {
+								outH_1(i, 1); search = 1; (i);
+							}
+						}
+						else {
+							if (max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin) {
+								outH_1(i, 1); search = 1; (i);
+							}
+						}
+					}
+					else if (countRoom != 0) {
+						if (max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten && countRoom >= House[i].flat.countRoom) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+					else {
+						if (max_distanceHospital >= House[i].location.distanceHospital && max_distanceKindergarten >= House[i].location.distanceKindergarten) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+				}
+				else if (max_coin != 0) {
+					if (countRoom != 0) {
+						if (max_distanceHospital >= House[i].location.distanceHospital && max_coin >= House[i].flat.coin && countRoom >= House[i].flat.countRoom) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+					else {
+						if (max_distanceHospital >= House[i].location.distanceHospital && max_coin >= House[i].flat.coin) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+				}
+				else if (countRoom != 0) {
+					if (max_distanceHospital >= House[i].location.distanceHospital && countRoom >= House[i].flat.countRoom) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+				else {
+					if (max_distanceHospital >= House[i].location.distanceHospital) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+			}
+			else if (max_distanceKindergarten != 0) {
+				if (max_coin != 0) {
+					if (countRoom != 0) {
+						if (max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin && countRoom >= House[i].flat.countRoom) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+					else {
+						if (max_distanceKindergarten >= House[i].location.distanceKindergarten && max_coin >= House[i].flat.coin) {
+							outH_1(i, 1); search = 1; (i);
+						}
+					}
+				}
+				else if (countRoom != 0) {
+					if (max_distanceKindergarten >= House[i].location.distanceKindergarten && countRoom >= House[i].flat.countRoom) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+				else {
+					if (max_distanceKindergarten >= House[i].location.distanceKindergarten) {
+						outH_1(i, 1); search = 1; (i);
+					}
+				}
+			}
+		}
+	}
+
+	if (search == 0) {
+		printf("\n\nПо запросу ничего не найденно!\n\n");
+	}
 }
 
 /// Вывод найденного
