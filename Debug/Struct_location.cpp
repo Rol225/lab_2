@@ -5,6 +5,6 @@ inline void Location(int distanceSchool, int distanceHospital, int distanceKinde
 	location.distanceSchool = distanceSchool;
 	location.distanceHospital = distanceHospital;
 	location.distanceKindergarten = distanceKindergarten;
-	strcat(location.houseAdress, houseStreet);
+	strcat(location.houseStreet, houseStreet);
 	location.numHouse = numHouse;
 }

@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <windows.h>
 #include<string.h>
-
+/*
 // Массив структур домов
 struct houses {
 
@@ -46,14 +46,14 @@ struct reference {
 };
 
 typedef struct reference ref; //тип
-
+*/
 /// <summary>
 /// Функциии объявление
 /// </summary>
 /// 
-inline void start(ref* rePtr); // Автоматическое заполнение структур
+/*inline void start(ref* rePtr); // Автоматическое заполнение структур
 inline void out(int count); // Вывод структур
 inline void outH_1(int i, int mod); // Вывод найденного
 inline void podbor(); //Подбор жилой площади
 inline int Add(int count, ref* rePtr); //Добавление жилплощади
-inline int Eddit(int count); //Редактирование структуры
+inline int Eddit(int count); //Редактирование структуры*/

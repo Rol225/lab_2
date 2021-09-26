@@ -140,9 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lab_2.cpp" />
+    <ClCompile Include="Struct_house.cpp" />
+    <ClCompile Include="Struct_location.cpp" />
+    <ClCompile Include="Struct_street.cpp" />
+    <ClCompile Include="Stuct_flat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lab_2.h" />
+    <ClInclude Include="Struct_flat.h" />
+    <ClInclude Include="Struct_house.h" />
+    <ClInclude Include="Struct_location.h" />
+    <ClInclude Include="Struct_street.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
