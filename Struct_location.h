@@ -1,15 +1,15 @@
 #pragma once
 
 //Расположение дома
-struct locations{
-	int distanceSchool = 0; //Расстояние до школы
-	int distanceHospital = 0;//Расстояние до больници
-	int  distanceKindergarten = 0;//Расстояние до детского сада
-	char houseStreet[30] = { 0 }; //адрес дома
-	int numHouse = 0;
-};
+__declspec(selectany) struct locations{
+	int distanceSchool; //Расстояние до школы
+	int distanceHospital;//Расстояние до больници
+	int  distanceKindergarten;//Расстояние до детского сада
+	char houseStreet[30]; //адрес дома
+	int numHouse;
+}location;
 
-typedef struct locations location; //тип
 
-void Location(int distanceSchool, int distanceHospital, int distanceKindergarten, char houseStreet[30], int numHouse, location* rePtr); //Ввод расположения
-void LocationViwe(location* rePtr); //Вывод расположения
+void Location(int distanceSchool, int distanceHospital, int distanceKindergarten, char houseStreet[30], int numHouse); //Ввод расположения прикладные функции
+void Location_console(); //Ввод расположения встроенной функцией
+void LocationViwe(); //Вывод расположения
