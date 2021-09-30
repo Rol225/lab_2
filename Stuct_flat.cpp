@@ -2,14 +2,17 @@
 #include "Struct_flat.h"
 #include <iostream>
 
-void Flat(int coin, int countRoom, int numFlat) {
+flats Flat(int coin, int countRoom, int numFlat) {
+	flats flat;
 	flat.coin = coin;
 	flat.countRoom = countRoom;
 	flat.numFlat = numFlat;
+	return flat;
 }
 
-void Flat_console()
+flats Flat_console()
 {
+	flats flat;
 	int coin, countRoom, numFlat;
 
 	printf("Выберите стоимость квартиры: ");
@@ -33,9 +36,11 @@ void Flat_console()
 	flat.coin = coin;
 	flat.countRoom = countRoom;
 	flat.numFlat = numFlat;
+
+	return flat;
 }
 
-void FlatViwe()
+void FlatViwe(flats flat)
 {
 	printf("Цена: %d\n", flat.coin);
 	printf("Количество комнат: %d\n", flat.countRoom);

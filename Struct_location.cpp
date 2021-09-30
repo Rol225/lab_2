@@ -2,20 +2,25 @@
 #include "Struct_location.h"
 #include <iostream>
 
-void Location(int distanceSchool, int distanceHospital, int distanceKindergarten, char houseStreet[30], int numHouse)
+locations Location(int distanceSchool, int distanceHospital, int distanceKindergarten, char houseStreet[30], int numHouse)
 {
+	locations location;
+
 	location.houseStreet[0] = 0;
 	location.distanceSchool = distanceSchool;
 	location.distanceHospital = distanceHospital;
 	location.distanceKindergarten = distanceKindergarten;
 	location.numHouse = numHouse;
 	strcat(location.houseStreet, houseStreet);
+	return location;
 }
 
-void Location_console()
+locations Location_console()
 {
 	int distanceSchool, distanceHospital, distanceKindergarten, numHouse;
 	char houseStreet[30];
+
+	locations location;
 
 	location.houseStreet[0] = 0;
 
@@ -50,9 +55,10 @@ void Location_console()
 	location.distanceKindergarten = distanceKindergarten;
 	location.numHouse = numHouse;
 	strcat(location.houseStreet, houseStreet);
+	return location;
 }
 
-void LocationViwe()
+void LocationViwe(locations location)
 {
 	printf("  Расстояние до школы: %d\n", location.distanceSchool);
 	printf("  Расстояние до больницы: %d\n", location.distanceHospital);

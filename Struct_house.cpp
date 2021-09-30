@@ -4,10 +4,13 @@
 #include "Struct_location.h"
 #include "Struct_street.h"
 
-void HouseAdd(int distanceSchool, int distanceHospital, int distanceKindergarten, char houseStreet[30], int numHouse, int coin, int countRoom, int numFlat, char streetDescription[150])
+houses HouseAdd(int distanceSchool, int distanceHospital, int distanceKindergarten, char houseStreet[30], int numHouse, int coin, int countRoom, int numFlat, char streetDescription[150], streets street)
 {
+	houses house;
+
 	street.streetName[0] = 0;
 	street.streetDescription[0] = 0;
+	house.location.houseStreet[0] = 0;
 
 	house.location.distanceSchool = distanceSchool;
 	house.location.distanceHospital = distanceHospital;
@@ -21,16 +24,20 @@ void HouseAdd(int distanceSchool, int distanceHospital, int distanceKindergarten
 		strcat(street.streetName, house.location.houseStreet);
 		strcat(street.streetDescription, streetDescription);
 	}
+	return house;
 }
 
-void HouseAdd_console()
+houses HouseAdd_console(streets street)
 {
+	houses house;
+
 	int distanceSchool, distanceHospital, distanceKindergarten, numHouse, coin, countRoom, numFlat;
 	char streetDescription[150];
 	char houseStreet[30];
 
 	street.streetName[0] = 0;
 	street.streetDescription[0] = 0;
+	house.location.houseStreet[0] = 0;
 
 	printf("Выберите расстояние до школы: ");
 	while (scanf("%d", &distanceSchool) != 1) {
@@ -90,9 +97,10 @@ void HouseAdd_console()
 		strcat(street.streetDescription, streetDescription);
 	}
 
+	return house;
 }
 
-void House_view()
+void House_view(houses house, streets street)
 {
 	int test = 0;
 	printf("  Адрес: %s, дом %d\n", house.location.houseStreet, house.location.numHouse);

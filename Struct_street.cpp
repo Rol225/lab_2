@@ -1,16 +1,21 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Struct_street.h"
 
-void Street(char streetName[], char streetDescription[])
+streets Street(char streetName[], char streetDescription[])
 {
+	streets street;
 	street.streetName[0] = 0;
 	street.streetDescription[0] = 0;
 	strcat(street.streetName, streetName);
 	strcat(street.streetDescription, streetDescription);
+
+	return street;
 }
 
-void Street_console()
+streets Street_console()
 {
+	streets street;
+
 	char streetName[30] = { 0 };
 	char streetDescription[150] = { 0 };
 
@@ -23,9 +28,10 @@ void Street_console()
 	strcat(street.streetName, streetName);
 	strcat(street.streetDescription, streetDescription);
 
+	return street;
 }
 
-void StreetView()
+void StreetView(streets street)
 {
 	printf("  Улица: %s\n", street.streetName);
 	printf("  Описание улицы: %s\n", street.streetDescription);

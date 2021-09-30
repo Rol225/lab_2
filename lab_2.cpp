@@ -53,6 +53,8 @@ void FunckForLocation() {
 	char houseStreet[30];
 	int option = 0;
 
+	locations location;
+
 	do {
 		printf("\n\n  1) Заполнить через встроенную функцию\n  2) Заполнить через внешнюю функцию\n  3) Вывести информацию со структуры\n  4) Выход в главное меню\n");
 		printf("Выберите действие: ");
@@ -67,7 +69,7 @@ void FunckForLocation() {
 		} while (option > 3 || option <= 0);
 
 		if (option == 1) {
-			Location_console();
+			location = Location_console();
 		}
 		else if (option == 2) {
 			printf("Выберите расстояние до школы: ");
@@ -96,11 +98,11 @@ void FunckForLocation() {
 
 			printf("\nУлица: "); scanf("%s", &houseStreet); while (getchar() != '\n');
 
-			Location(distanceSchool, distanceHospital, distanceKindergarten, houseStreet, numHouse);
+			location = Location(distanceSchool, distanceHospital, distanceKindergarten, houseStreet, numHouse);
 		}
 		else if (option == 3) {
 			printf("\n");
-			LocationViwe();
+			LocationViwe(location);
 		}
 	} while (option != 4);
 	
@@ -109,6 +111,7 @@ void FunckForLocation() {
 void FunckForFlat() {
 	int coin, countRoom, numFlat;
 	int option = 0;
+	flats flat;
 
 	do {
 		printf("\n\n  1) Заполнить через встроенную функцию\n  2) Заполнить через внешнюю функцию\n  3) Вывести информацию со структуры\n  4) Выход в главное меню\n");
@@ -124,7 +127,7 @@ void FunckForFlat() {
 		} while (option > 3 || option <= 0);
 
 		if (option == 1) {
-			Flat_console();
+			flat = Flat_console();
 		}
 		else if (option == 2) {
 			printf("Выберите стоимость квартиры: ");
@@ -145,10 +148,10 @@ void FunckForFlat() {
 				printf("Ошибка. Введите число: ");
 			}
 
-			Flat(coin, countRoom, numFlat);
+			flat = Flat(coin, countRoom, numFlat);
 		}
 		else if (option == 3) {
-			FlatViwe();
+			FlatViwe(flat);
 		}
 
 	} while (option != 4);
@@ -157,6 +160,8 @@ void FunckForFlat() {
 void FunckForStreet() {
 	char streetName[30] = { 0 };
 	char streetDescription[150] = { 0 };
+
+	streets street;
 
 	int option = 0;
 	do {
@@ -173,7 +178,7 @@ void FunckForStreet() {
 		} while (option > 3 || option <= 0);
 
 		if (option == 1) {
-			Street_console();
+			street = Street_console();
 		}
 		else if (option == 2) {
 			
@@ -186,10 +191,10 @@ void FunckForStreet() {
 			strcat(street.streetName, streetName);
 			strcat(street.streetDescription, streetDescription);
 
-			Street(streetName, streetDescription);
+			street = Street(streetName, streetDescription);
 		}
 		else if (option == 3) {
-			StreetView();
+			StreetView(street);
 		}
 
 	} while (option != 4);
@@ -199,6 +204,9 @@ void FunckForHouse() {
 	int distanceSchool, distanceHospital, distanceKindergarten, numHouse, coin, countRoom, numFlat;
 	char streetDescription[150];
 	char houseStreet[30];
+
+	streets street;
+	houses house;
 
 	int option = 0;
 	do {
@@ -215,7 +223,7 @@ void FunckForHouse() {
 		} while (option > 3 || option <= 0);
 
 		if (option == 1) {
-			HouseAdd_console();
+			house = HouseAdd_console(street);
 		}
 		else if (option == 2) {
 
@@ -264,10 +272,10 @@ void FunckForHouse() {
 			printf("\nУлица: "); scanf("%s", &houseStreet); while (getchar() != '\n');
 			printf("\nОписание улици: "); gets_s(streetDescription, 150);
 
-			HouseAdd(distanceSchool, distanceHospital, distanceKindergarten, houseStreet, numHouse, coin, countRoom, numFlat, streetDescription);
+			house = HouseAdd(distanceSchool, distanceHospital, distanceKindergarten, houseStreet, numHouse, coin, countRoom, numFlat, streetDescription, street);
 		}
 		else if (option == 3) {
-			House_view();
+			House_view(house, street);
 		}
 
 	} while (option != 4);
